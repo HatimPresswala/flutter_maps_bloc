@@ -76,6 +76,15 @@ This app uses **flutter_bloc** for reactive state management and **hydrated_bloc
 - 📡 Tracks current location with permission prompts
 - 🧱 Modular folder structure: `features/`, `core/`, `data/`
 
+---
+
+## 📸 Screenshots & Demo Video
+
+```
+assets/screenshots/livemap.jpg
+assets/screenshots/savedlocation.jpg
+assets/video/Demo_flutter_google_map.mp4
+```
 
 ---
 
