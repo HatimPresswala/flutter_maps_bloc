@@ -1,16 +1,111 @@
-# flutter_map
 
-A new Flutter project.
+# Flutter Maps App with BLoC & HydratedBloc
 
-## Getting Started
+This Flutter application demonstrates:
 
-This project is a starting point for a Flutter application.
+- 📍 Google Maps integration  
+- 🚶 Real-time location tracking  
+- 📌 Drop pins by tapping the map  
+- 💾 Persistent pin storage using HydratedBloc  
+- 🔁 Refresh map + location manually or on app resume  
+- ✅ Clean BLoC architecture with MVVM-style folder structure
 
-A few resources to get you started if this is your first Flutter project:
+---
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 🔧 Setup Instructions
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. **Clone the Repository**
+
+```bash
+git clone https://github.com/HatimPresswala/flutter_maps_bloc.git
+cd flutter_maps_bloc
+```
+
+2. **Install Dependencies**
+
+```bash
+flutter pub get
+```
+
+3. **Configure Google Maps API Key**
+
+- Open `android/app/src/main/AndroidManifest.xml`
+- Replace `YOUR_GOOGLE_MAP_API_KEY_HERE` with your actual API key:
+
+```xml
+<meta-data
+  android:name="com.google.android.geo.API_KEY"
+  android:value="YOUR_GOOGLE_MAP_API_KEY_HERE"/>
+```
+
+4. **Run the App**
+
+```bash
+flutter run
+```
+
+> ⚠️ For best results, run on a real Android device or emulator with Google Play Services.
+
+---
+
+## 🧠 BLoC Usage Overview
+
+This app uses **flutter_bloc** for reactive state management and **hydrated_bloc** for local persistence.
+
+### ▶️ HomeBloc
+- Manages:
+  - Current user location (real-time)
+  - All pins shown on the map
+- Events handled:
+  - `LoadUserLocationEvent`
+  - `DropPinEvent`
+  - `StartLocationUpdatesEvent`
+  - `LocationChangedEvent`
+
+### ▶️ SavedLocationsBloc (Hydrated)
+- Stores user-dropped pins persistently using local storage.
+- Rehydrates saved pins on app restart without any extra setup.
+
+---
+
+## 💡 Features
+
+- 📍 Tap the map to drop pins
+- 💾 Pins are saved to disk and restored after app restart
+- 🔄 Refresh button in AppBar reloads location and saved pins
+- 📡 Tracks current location with permission prompts
+- 🧱 Modular folder structure: `features/`, `core/`, `data/`
+
+
+---
+
+## 📁 Project Structure
+
+```
+lib/
+├── app.dart
+├── main.dart
+├── core/services/location_service.dart
+├── data/models/pinned_location.dart
+├── features/
+│   ├── home/
+│   │   ├── bloc/
+│   │   └── ui/
+│   └── saved_locations/
+│       ├── bloc/
+│       └── ui/
+```
+
+---
+
+## ✅ Submission Info
+
+- GitHub Repo: [flutter_maps_bloc](https://github.com/HatimPresswala/flutter_maps_bloc)
+- Submitted by: Hatim Presswala
+- Role: Flutter Developer
+
+---
+
+## 📜 License
+
+MIT License. Free to use, modify, and build on.
